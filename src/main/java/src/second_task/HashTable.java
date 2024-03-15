@@ -8,12 +8,12 @@ public class HashTable {
     private LinkedList<Integer>[] ARRAY;
 
     public HashTable() {
-        ARRAY = new LinkedList[DEFAULT_CAPACITY];
+        this.ARRAY = new LinkedList[DEFAULT_CAPACITY];
     }
 
     public HashTable(int capacity) {
-        DEFAULT_CAPACITY = capacity;
-        ARRAY = new LinkedList[DEFAULT_CAPACITY];
+        this.DEFAULT_CAPACITY = capacity;
+        this.ARRAY = new LinkedList[DEFAULT_CAPACITY];
     }
 
     public int hashFunction(int element) {

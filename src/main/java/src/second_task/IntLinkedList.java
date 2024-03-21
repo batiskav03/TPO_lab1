@@ -8,7 +8,7 @@ public class IntLinkedList {
 
     private Node lastNode;
 
-    private boolean add(Integer element) {
+    public boolean add(Integer element) {
         if (element == null) return false;
         if (size == 0) {
             firstNode = new Node(element, null);
@@ -23,7 +23,7 @@ public class IntLinkedList {
         return true;
     }
 
-    private boolean delete(Integer element) {
+    public boolean delete(Integer element) {
         if (element == null) return false;
 
         Node prev = firstNode;
@@ -46,7 +46,7 @@ public class IntLinkedList {
         return true;
     }
 
-    private boolean find(Integer element) {
+    public boolean find(Integer element) {
         if (element == null) return false;
 
         Node curr = firstNode;

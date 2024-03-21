@@ -14,5 +14,15 @@ public class Main {
         map.put(14);
         map.put(15);
         System.out.println(map);
+
+        HashTable smap = new HashTable();
+        smap.put(3);
+        smap.put(2);
+        smap.put(2);
+        smap.put(3);
+        smap.put(14);
+        smap.put(15);
+        System.out.println(smap);
+        System.out.println(map.equals(smap));
     }
 }

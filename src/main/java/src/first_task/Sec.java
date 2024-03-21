@@ -6,7 +6,7 @@ public class Sec {
         return x * fact(x - 1);
     }
 
-    private double calc(double x, double n) {
+    public double calc(double x, double n) {
         final double PI2 = Math.PI * 2;
         if (x >= 0) {
             while (x > PI2) {
@@ -24,7 +24,7 @@ public class Sec {
         double pow = 1;
         int sign = 1;
         for (int i = 0; i < n; i += 2) {
-            result = sign * pow / fact(i);
+            result += sign * pow / fact(i);
             sign = -sign;
             pow *= xx;
         }

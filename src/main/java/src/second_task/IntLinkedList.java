@@ -1,5 +1,7 @@
 package src.second_task;
 
+import java.util.Objects;
+
 public class IntLinkedList {
 
     private int size = 0;
@@ -24,7 +26,7 @@ public class IntLinkedList {
     }
 
     public boolean delete(Integer element) {
-        if (element == null) return false;
+        if (element == null || size == 0) return false;
 
         Node prev = firstNode;
         Node curr = firstNode.next;
@@ -47,7 +49,7 @@ public class IntLinkedList {
     }
 
     public boolean find(Integer element) {
-        if (element == null) return false;
+        if (element == null || size == 0) return false;
 
         Node curr = firstNode;
         while (curr != null) {
@@ -60,19 +62,32 @@ public class IntLinkedList {
     }
 
 
-    private class Node {
-        Integer value;
-        Node next;
-
-        Node(int value, Node next) {
-            this.value = value;
-            this.next = next;
-
-        }
-    }
-
     public int getSize() {
         return size;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IntLinkedList that = (IntLinkedList) o;
+        if (that.size != this.size) return false;
+
+        Node currThis = firstNode;
+        Node currThat = that.firstNode;
+        while (currThis != null) {
+            if (!currThat.equals(currThis)) return false;
+
+            currThis = currThis.next;
+            currThat = currThat.next;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, firstNode, lastNode);
     }
 
     @Override
@@ -89,5 +104,29 @@ public class IntLinkedList {
         }
         result.append(" ]");
         return result.toString();
+    }
+
+    private class Node {
+        Integer value;
+        Node next;
+
+        Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Node node = (Node) o;
+            return Objects.equals(value, node.value);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(value);
+        }
     }
 }

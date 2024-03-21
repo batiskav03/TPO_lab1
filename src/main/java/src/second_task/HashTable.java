@@ -25,7 +25,7 @@ public class HashTable {
     }
 
     public int hashFunction(int element) {
-        int mod = DEFAULT_CAPACITY + 1;
+        int mod = DEFAULT_CAPACITY;
         return element % mod;
     }
 
@@ -45,6 +45,24 @@ public class HashTable {
         final int hash = hashFunction(element);
         IntLinkedList bucket = ARRAY[hash];
         return bucket.add(element);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HashTable hashTable = (HashTable) o;
+        if (DEFAULT_CAPACITY != hashTable.DEFAULT_CAPACITY) return false;
+        return Arrays.equals(ARRAY, hashTable.ARRAY);
+    }
+
+    public IntLinkedList getBucket(int number) {
+        return ARRAY[number];
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(ARRAY);
     }
 
     @Override
